@@ -16,7 +16,9 @@
 
 ALBERT_LOGGING_CATEGORY("contacts_kde")
 
+using namespace Qt::StringLiterals;
 using namespace albert;
+using namespace albert::util;
 using namespace std;
 
 const char *CFG_COLLECTIONS = "collections";
@@ -48,7 +50,7 @@ void Plugin::updateIndexItems() {
     if (collection.isChecked())
       collection.createIndexItems(items);
 
-  INFO << QString("Indexed %1 items").arg(items.size());
+  INFO << u"Indexed %1 items"_s.arg(items.size());
   setIndexItems(::move(items));
 }
 

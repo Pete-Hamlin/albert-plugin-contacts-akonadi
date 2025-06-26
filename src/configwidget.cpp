@@ -4,13 +4,14 @@
 #include <QMessageBox>
 
 using namespace std;
+using namespace albert::util;
 
 ConfigWidget::ConfigWidget() {
   ui.setupUi(this);
 
   ui.list_view->setModel(&model);
-  connect(ui.update_button, &QPushButton::pressed, Plugin::instance(),
-          &Plugin::updateCollectionList);
+  connect(ui.update_button, &QPushButton::pressed, this,
+          [] { Plugin::instance()->updateCollectionList(); });
 }
 
 CollectionsModel::CollectionsModel() {

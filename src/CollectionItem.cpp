@@ -11,9 +11,13 @@
 #include <albert/albert.h>
 #include <albert/logging.h>
 #include <albert/standarditem.h>
+#include <albert/systemutil.h>
 #include <qeventloop.h>
 
+using namespace Qt::StringLiterals;
 using namespace std;
+using namespace albert::util;
+using namespace albert;
 
 CollectionItem::CollectionItem(QString n, QString ur, QString id)
     : name(n), url(ur), id(id) {}
@@ -22,8 +26,7 @@ bool CollectionItem::isChecked() const {
   return Plugin::instance()->checked().contains(this->id);
 }
 
-void CollectionItem::createIndexItems(
-    vector<albert::IndexItem> &results) const {
+void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
 
   INFO << "Indexing items for collection: " << this->name;
   auto col_id = this->id.toInt();
@@ -63,16 +66,17 @@ void CollectionItem::createIndexItems(
 
                   for (auto phoneNumber : contact.phoneNumbers()) {
                     auto number = phoneNumber.number();
+                    QString id = u"phone-%1"_s % number;
 
-                    auto phone_item = albert::StandardItem::make(
-                        "phone" + number, contact_name, number, {"xdg:phone"},
-                        {
-                            {"copy", "Copy",
-                             [number]() { albert::setClipboardText(number); }},
-                            {"call", "Call",
-                             [number]() { albert::openUrl("tel:" + number); }},
-                            {"message", "Message",
-                             [number]() { albert::openUrl("sms:" + number); }},
+                    auto phone_item = StandardItem::make(
+                        id, contact_name, number, QStringList{u"xdg:phone"_s},
+                        std::vector<Action>{
+                            {u"copy"_s, u"Copy"_s,
+                             [number]() { setClipboardText(number); }},
+                            {u"call"_s, u"Call"_s,
+                             [number]() { openUrl(u"tel:%1"_s % number); }},
+                            {u"message"_s, u"Message"_s,
+                             [number]() { openUrl(u"sms:%1"_s % number); }},
                         });
 
                     results.emplace_back(phone_item, phone_item->text());
@@ -80,14 +84,15 @@ void CollectionItem::createIndexItems(
 
                   for (auto email : contact.emails()) {
 
-                    auto email_item = albert::StandardItem::make(
-                        "email" + email, contact_name, email,
-                        {"xdg:mail-client"},
+                    QString id = u"email-%1"_s % email;
+                    auto email_item = StandardItem::make(
+                        id, contact_name, email,
+                        QStringList{u"xdg:mail-client"_s},
                         {
-                            {"copy", "Copy",
-                             [email]() { albert::setClipboardText(email); }},
-                            {"mail", "Compose",
-                             [email]() { albert::openUrl("maito:" + email); }},
+                            {u"copy"_s, u"Copy"_s,
+                             [email]() { setClipboardText(email); }},
+                            {u"mail"_s, u"Compose"_s,
+                             [email]() { openUrl(u"mailto:%1"_s % email); }},
                         });
 
                     results.emplace_back(email_item, email_item->text());

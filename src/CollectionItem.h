@@ -4,11 +4,13 @@
 #include <albert/indexitem.h>
 #include <vector>
 
+using namespace albert::util;
+
 class CollectionItem {
 public:
   CollectionItem(QString name, QString url, QString id);
 
-  void createIndexItems(std::vector<albert::IndexItem> &results) const;
+  void createIndexItems(std::vector<IndexItem> &results) const;
 
   bool isChecked() const;
 
