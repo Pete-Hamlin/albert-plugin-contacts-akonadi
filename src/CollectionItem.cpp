@@ -9,6 +9,7 @@
 #include <KContacts/Addressee>
 #include <QString>
 #include <albert/albert.h>
+#include <albert/iconutil.h>
 #include <albert/logging.h>
 #include <albert/standarditem.h>
 #include <albert/systemutil.h>
@@ -69,7 +70,7 @@ void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
                     QString id = u"phone-%1"_s % number;
 
                     auto phone_item = StandardItem::make(
-                        id, contact_name, number, QStringList{u"xdg:phone"_s},
+                        id, contact_name, number, makeThemeIcon{u"phone"_s},
                         std::vector<Action>{
                             {u"copy"_s, u"Copy"_s,
                              [number]() { setClipboardText(number); }},
@@ -87,7 +88,7 @@ void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
                     QString id = u"email-%1"_s % email;
                     auto email_item = StandardItem::make(
                         id, contact_name, email,
-                        QStringList{u"xdg:mail-client"_s},
+                        makeThemeIcon{u"mail-client"_s},
                         {
                             {u"copy"_s, u"Copy"_s,
                              [email]() { setClipboardText(email); }},
