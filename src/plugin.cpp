@@ -18,7 +18,6 @@ ALBERT_LOGGING_CATEGORY("contacts_kde")
 
 using namespace Qt::StringLiterals;
 using namespace albert;
-using namespace albert::util;
 using namespace std;
 
 const char *CFG_COLLECTIONS = "collections";

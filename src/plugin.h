@@ -4,7 +4,7 @@
 #include <albert/indexqueryhandler.h>
 #include <qcontainerfwd.h>
 
-using namespace albert::util;
+using namespace albert;
 
 class Plugin : public ExtensionPlugin, public IndexQueryHandler {
   ALBERT_PLUGIN

@@ -17,7 +17,6 @@
 
 using namespace Qt::StringLiterals;
 using namespace std;
-using namespace albert::util;
 using namespace albert;
 
 CollectionItem::CollectionItem(QString n, QString ur, QString id)
@@ -27,7 +26,8 @@ bool CollectionItem::isChecked() const {
   return Plugin::instance()->checked().contains(this->id);
 }
 
-void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
+void CollectionItem::createIndexItems(
+    vector<albert::IndexItem> &results) const {
 
   INFO << "Indexing items for collection: " << this->name;
   auto col_id = this->id.toInt();
@@ -70,7 +70,8 @@ void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
                     QString id = u"phone-%1"_s % number;
 
                     auto phone_item = StandardItem::make(
-                        id, contact_name, number, makeThemeIcon{u"phone"_s},
+                        id, contact_name, number,
+                        [] { return makeThemeIcon(u"phone"_s); },
                         std::vector<Action>{
                             {u"copy"_s, u"Copy"_s,
                              [number]() { setClipboardText(number); }},
@@ -88,7 +89,7 @@ void CollectionItem::createIndexItems(vector<IndexItem> &results) const {
                     QString id = u"email-%1"_s % email;
                     auto email_item = StandardItem::make(
                         id, contact_name, email,
-                        makeThemeIcon{u"mail-client"_s},
+                        [] { return makeThemeIcon(u"mail-client"_s); },
                         {
                             {u"copy"_s, u"Copy"_s,
                              [email]() { setClipboardText(email); }},

@@ -4,7 +4,7 @@
 #include <QMessageBox>
 
 using namespace std;
-using namespace albert::util;
+using namespace albert;
 
 ConfigWidget::ConfigWidget() {
   ui.setupUi(this);
