@@ -1,4 +1,20 @@
 
+<a name="0.3.0"></a>
+## [0.3.0] - 2026-01-09
+### Chore
+- Added changelog config
+
+### Doc
+- Added changelog
+
+### Fix
+- Update plugin to v0.33 extension API
+
+### BREAKING CHANGE
+
+Compatible with albert v0.33+ only
+
+
 <a name="0.2.0"></a>
 ## [0.2.0] - 2025-06-26
 ### Docs
@@ -37,5 +53,6 @@
 - Adjusted install to not require root
 
 
-[Unreleased]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.1.0...0.2.0
