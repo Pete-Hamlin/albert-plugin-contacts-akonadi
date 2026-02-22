@@ -9,7 +9,6 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QString>
-#include <albert/albert.h>
 #include <albert/logging.h>
 #include <albert/notification.h>
 #include <albert/standarditem.h>

@@ -8,8 +8,7 @@
 #include <Akonadi/ItemFetchScope>
 #include <KContacts/Addressee>
 #include <QString>
-#include <albert/albert.h>
-#include <albert/iconutil.h>
+#include <albert/icon.h>
 #include <albert/logging.h>
 #include <albert/standarditem.h>
 #include <albert/systemutil.h>
@@ -71,7 +70,7 @@ void CollectionItem::createIndexItems(
 
                     auto phone_item = StandardItem::make(
                         id, contact_name, number,
-                        [] { return makeThemeIcon(u"phone"_s); },
+                        [] { return Icon::theme(u"phone"_s); },
                         std::vector<Action>{
                             {u"copy"_s, u"Copy"_s,
                              [number]() { setClipboardText(number); }},
@@ -89,7 +88,7 @@ void CollectionItem::createIndexItems(
                     QString id = u"email-%1"_s % email;
                     auto email_item = StandardItem::make(
                         id, contact_name, email,
-                        [] { return makeThemeIcon(u"mail-client"_s); },
+                        [] { return Icon::theme(u"mail-client"_s); },
                         {
                             {u"copy"_s, u"Copy"_s,
                              [email]() { setClipboardText(email); }},
