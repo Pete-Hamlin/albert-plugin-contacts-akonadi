@@ -1,4 +1,16 @@
 
+<a name="0.3.1"></a>
+## [0.3.1] - 2026-02-22
+### Chore
+- Add maintainer
+
+### Doc
+- CHANGELOG 0.3.0
+
+### Fix
+- Update to albert v 0.34
+
+
 <a name="0.3.0"></a>
 ## [0.3.0] - 2026-01-09
 ### Chore
@@ -53,6 +65,7 @@ Compatible with albert v0.33+ only
 - Adjusted install to not require root
 
 
-[Unreleased]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.3.1...HEAD
+[0.3.1]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/Pete-Hamlin/albert_kde_contacts/compare/0.1.0...0.2.0
